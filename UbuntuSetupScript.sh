@@ -7,7 +7,7 @@
 
 #Define our package arrays
 util_packages=("htop" "screen" "unity-tweak-tool" "gdebi") #gdebi for installing debian packages on terminal
-main_packages=("atom" "git")
+main_packages=("git")
 extra_packages=("" "")
 
 #Let's go user's home dir
@@ -23,6 +23,16 @@ sudo apt-get install -yy ${util_packages[@]} # -yy install w/o asking ANYTHING, 
 echo "Installing main packages:"
 echo "${main_packages[@]}"
 sudo apt-get install -yy ${main_packages[@]}
+
+#Installing Atom Text editor
+#Variables
+atomURL="https://github.com/atom/atom/releases/download/v1.12.7/atom-amd64.deb"
+atomFile=atom-amd64.deb
+cd ~/Downloads
+wget ${atomURL}
+sudo gdebi -n ${atomFile}
+rm -f ${atomFile}
+cd ~
 
 # Example: installing Google Chrome
 #variables
