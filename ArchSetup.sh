@@ -1,9 +1,19 @@
 #!/bin/bash
 #Made by Eurybus 10.12.2016
+#Navigating to user home
+#cd ${HOME}
+
 #Setting up needed variables
 PreInstallPackagesFile=OriginalPackages.txt
+
 #Add packages you want to install to array below like so packages=("package1" "package2")
-packages=("atom" "wine" "wine-mono" "wireshark-gtk" "nmap" "android-tools" "numix-themes" "nemiver" "vlc")
+packages=("atom" "wine" "wine-mono" "wireshark-gtk" "nmap" "android-tools" "numix-themes" "nemiver" "vlc" "firefox" "screen" "thunderbird" "jdk8-openjdk" "intellij-idea-community-edition" "monodevelop" "mono-debugger" "ttf-anonymous-pro" "ttf-croscore" "owncloud-client")
+
+#Tar.gz files containing configurations for certain pieces of software
+firefoxConf=firefoxConf.tar.gz
+thunderbirdConf=thunderbirdConf.tar.gz
+owncloudConf=owncloudConf.tar.gz
+
 #Defining functions
 #Source for three functions below: http://stackoverflow.com/a/27587157
 #By http://stackoverflow.com/users/4257217/greenraccoon23
@@ -66,6 +76,42 @@ _installMany() {
     yes |sudo pacman -S "${toInstall[@]}"; # piped in yes to answer all questions with 'yes' | Eurybus
 }
 
+#My own functions | Eurybus 2016-12-10 17:31:51 
+#These functions use backed up (tar.gz) configurations from previous installations
+_configFirefox(){
+	if [ -e "$firefoxConf"] ; then
+		echo "Configuration archive for Firefox was found. Extracting ..."
+		tar -zxvf ${firefoxConf}
+		return;
+	fi;
+	else
+		echo "$firefoxConf was not found."
+		return;
+	fi;
+}
+_configThunderbird(){
+	if [ -e "$thunderbirdConf"] ; then
+		echo "Configuration archive for Thunderbird was found. Extracting ..."
+		tar -zxvf ${thunderbirdConf}
+		return;
+	fi;
+	else
+		echo "$thunderbirdConf was not found."
+		return;
+	fi;
+}
+_configOwncloud(){
+	if [ -e "$owncloudConf"] ; then
+		echo "Configuration archive for Owncloud client was found. Extracting ..."
+		tar -zxvf ${owncloudConf}
+		return;
+	fi;
+	else
+		echo "$owncloudConf was not found."
+		return;
+	fi;
+}
+#
 #Examples
 #package="lshw";
 #_install "${package}";
@@ -94,8 +140,3 @@ echo "Installing following packages: ${packages[@]}";
 _installMany "${packages[@]}";
 
 echo "End of script";
-#Now to visual side of things
-#This is better to do by hand, really
-
-
-
