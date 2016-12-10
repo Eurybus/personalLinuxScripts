@@ -7,7 +7,7 @@
 
 #Define our package arrays
 util_packages=("htop" "screen" "unity-tweak-tool" "gdebi") #gdebi for installing debian packages on terminal
-main_packages=("atom")
+main_packages=("atom" "git")
 extra_packages=("" "")
 
 #Let's go user's home dir
