@@ -14,7 +14,7 @@ extra_packages=("" "")
 cd ~
 
 #Let's update first
-echo "Updating pre-installed packages";
+echo "Updating pre-installed packages"
 sudo apt-get update -qq # -qq for no output
 
 echo "Installing utilities:"
