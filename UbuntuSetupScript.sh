@@ -6,9 +6,9 @@
 #Original by: https://www.youtube.com/channel/UCTfabOKD7Yty6sDF4POBVqA
 
 #Define our package arrays
-util_packages=("htop" "screen" "unity-tweak-tool" "gdebi") #gdebi for installing debian packages on terminal
-main_packages=("git")
-extra_packages=("" "")
+util_packages=("htop" "screen" "unity-tweak-tool" "gdebi" "git") #gdebi for installing debian packages on terminal
+extra_packages=("numix-gtk-theme" "numix-icon-theme" "unity-tweak-tool")
+main_packages=("openjdk-8-jdk" "unzip" "keepass2" "owncloud-client")
 
 #Let's go user's home dir
 cd ~
@@ -46,10 +46,20 @@ rm -f ${gchromeFile}
 cd ~ #Back to home
 
 #Example: installing Spotify
-sudo apt-add-repository -y "deb http://repository.spotify.com stable non-free"
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys D2C19886 #Lets grab the public key for Spotify repository
-sudo apt-get update -qq
-sudo apt-get install spotify-client
+#sudo apt-add-repository -y "deb http://repository.spotify.com stable non-free"
+#sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys D2C19886 #Lets grab the public key for Spotify repository
+#sudo apt-get update -qq
+#sudo apt-get install spotify-client
+
+#Installing Android studio
+#Variables
+androidStudioUrl="https://dl.google.com/dl/android/studio/ide-zips/2.2.3.0/android-studio-ide-145.3537739-linux.zip"
+androidStudioFile=android-studio-ide-145.3537739-linux.zip
+cd ~/Downloads
+wget ${androidStudioUrl}
+unzip ${androidStudioFile}
+mkdir -p ../Dev/Apps/
+mv android-studio ../Dev/Apps/Android-Studio
 
 #System tweaks
 sudo apt-get remove -yy gstreamer1.0-fluendo-mp3 #Removing this for better audio quality
