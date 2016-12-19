@@ -72,7 +72,7 @@ tar -zxvf ${intelliJtar}
 
 #CHMOD changes
 cd ~/
-chown -f $USER:$USER Dev
+sudo chown -R $USER:$USER Dev
 
 #System tweaks
 sudo apt-get remove -yy gstreamer1.0-fluendo-mp3 #Removing this for better audio quality
