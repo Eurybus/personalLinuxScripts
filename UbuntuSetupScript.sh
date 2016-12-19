@@ -61,6 +61,19 @@ unzip ${androidStudioFile}
 mkdir -p ../Dev/Apps/
 mv android-studio ../Dev/Apps/Android-Studio
 
+#Installing IntelliJ
+cd ~/Downloads
+intelliJURL="https://download.jetbrains.com/idea/ideaIC-2016.3.1.tar.gz"
+intelliJtar=ideaIC-2016.3.1.tar.gz
+wget ${intelliJURL}
+mkdir -p ~/Dev/Apps/
+mv ${intelliJURL} ~/Dev/Apps/
+tar -zxvf ${intelliJtar}
+
+#CHMOD changes
+cd ~/
+chown -f $USER:$USER Dev
+
 #System tweaks
 sudo apt-get remove -yy gstreamer1.0-fluendo-mp3 #Removing this for better audio quality
 #We are about to mod system config file. Time to backup
