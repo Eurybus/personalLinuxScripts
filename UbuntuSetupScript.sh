@@ -70,6 +70,15 @@ mkdir -p ~/Dev/Apps/
 mv ${intelliJURL} ~/Dev/Apps/
 tar -zxvf ${intelliJtar}
 
+#Installing Qt as instructed here: 
+#https://webcache.googleusercontent.com/search?q=cache:cZknWO3kw2YJ:https://wiki.qt.io/Install_Qt_5_on_Ubuntu+&cd=1&hl=en&ct=clnk&gl=fi&client=firefox-b
+cd ~/Downloads
+wget "http://download.qt.io/official_releases/qt/5.8/5.8.0/qt-opensource-linux-x64-5.8.0.run"
+sudo chmod +x *.run
+sudo sh qt-opensource-linux-x64-5.8.0.run
+dev_packages=("build-essential" "libfontconfig1" "mesa-common-dev" "libglu1-mesa-dev")
+sudo apt-get install -yy ${dev_packages[@]}
+
 #CHMOD changes
 cd ~/
 sudo chown -R $USER:$USER Dev
