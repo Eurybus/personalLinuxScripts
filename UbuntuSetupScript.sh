@@ -6,7 +6,7 @@
 #Original by: https://www.youtube.com/channel/UCTfabOKD7Yty6sDF4POBVqA
 
 #Define our package arrays
-util_packages=("htop" "screen" "unity-tweak-tool" "gdebi" "git") #gdebi for installing debian packages on terminal
+util_packages=("htop" "screen" "unity-tweak-tool" "gdebi" "git" "tmux") #gdebi for installing debian packages on terminal
 extra_packages=("numix-gtk-theme" "numix-icon-theme" "unity-tweak-tool")
 main_packages=("openjdk-8-jdk" "unzip" "keepass2" "owncloud-client")
 
@@ -26,7 +26,7 @@ sudo apt-get install -yy ${main_packages[@]}
 
 #Installing Atom Text editor
 #Variables
-atomURL="https://github.com/atom/atom/releases/download/v1.12.7/atom-amd64.deb"
+atomURL="https://github.com/atom/atom/releases/download/v1.13.1/atom-amd64.deb"
 atomFile=atom-amd64.deb
 cd ~/Downloads
 wget ${atomURL}
