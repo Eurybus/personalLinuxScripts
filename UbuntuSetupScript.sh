@@ -15,6 +15,7 @@ install_utils="n" # n or y
 install_main="n"
 install_extra="n"
 
+install_atom="n"
 install_spotity="n"
 install_chrome="n"
 install_intellij="n"
@@ -37,22 +38,49 @@ select yn in "y" "n"; do
   esac
 done
 
-echo "Installing utilities:"
-echo "${util_packages[@]}"
-sudo apt-get install -yy ${util_packages[@]} # -yy install w/o asking ANYTHING, goes for defaults in case of problems
-echo "Installing main packages:"
-echo "${main_packages[@]}"
-sudo apt-get install -yy ${main_packages[@]}
+echo "Do you want to install main packages?"
+select yn in "y" "n"; do
+  case %yn in
+  y ) %install_main="y"
+  n ) %install_main="n"
+  esac
+done
 
-#Installing Atom Text editor
-#Variables
-atomURL="https://github.com/atom/atom/releases/download/v1.13.1/atom-amd64.deb"
-atomFile=atom-amd64.deb
-cd ~/Downloads
-wget ${atomURL}
-sudo gdebi -n ${atomFile}
-rm -f ${atomFile}
-cd ~
+echo "Do you want to install main Atom text editor?"
+select yn in "y" "n"; do
+  case %yn in
+  y ) %install_atom="y"
+  n ) %install_atom="n"
+  esac
+done
+
+if [ %install_utils -eq "y"]
+then
+	echo "Installing utilities:"
+	echo "${util_packages[@]}"
+	sudo apt-get install -yy ${util_packages[@]} # -yy install w/o asking ANYTHING, goes for defaults in case of problems
+fi
+
+if [ %install_main -eq "y"]
+then
+	echo "Installing main packages:"
+	echo "${main_packages[@]}"
+	sudo apt-get install -yy ${main_packages[@]}
+fi
+
+if [ %install_atom -eq "y"]
+then
+	#Installing Atom Text editor
+	#Variables
+	atomURL="https://github.com/atom/atom/releases/download/v1.13.1/atom-amd64.deb"
+	atomFile=atom-amd64.deb
+	cd ~/Downloads
+	wget ${atomURL}
+	sudo gdebi -n ${atomFile}
+	rm -f ${atomFile}
+	cd ~
+fi
+
 
 # Example: installing Google Chrome
 #variables
