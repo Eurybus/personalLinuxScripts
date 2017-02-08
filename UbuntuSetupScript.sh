@@ -10,12 +10,32 @@ util_packages=("htop" "screen" "unity-tweak-tool" "gdebi" "git" "tmux") #gdebi f
 extra_packages=("numix-gtk-theme" "numix-icon-theme" "unity-tweak-tool")
 main_packages=("openjdk-8-jdk" "unzip" "keepass2" "owncloud-client")
 
+#Other variables
+install_utils="n" # n or y
+install_main="n"
+install_extra="n"
+
+install_spotity="n"
+install_chrome="n"
+install_intellij="n"
+install_andrStd="n"
+install_qt="n"
+perform_tweaks="n"
+
 #Let's go user's home dir
 cd ~
 
 #Let's update first
 echo "Updating pre-installed packages"
 sudo apt-get update -qq # -qq for no output
+
+echo "Do you want to install utilities?"
+select yn in "y" "n"; do
+  case %yn in
+  y ) %install_utils="y"
+  n ) %install_utils="n"
+  esac
+done
 
 echo "Installing utilities:"
 echo "${util_packages[@]}"
