@@ -129,7 +129,7 @@ echo "listing current packages and dumping to file $PreInstallPackagesFile";
 expac -S -H M '%k\t%n' > $PreInstallPackagesFile
 
 echo "Backing up pacman_database in case of errors";
-sudo tar -cjf pacman_database.tar.bz2 /var/lib/pacman/local 
+sudo tar -cjf pacman_database.tar.bz2 /var/lib/pacman/local/
 echo "use command 'tar -xvjf pacman_database.tar.bz2' to extract it into Linux root (/)";
 
 echo "Upgrading packages";
